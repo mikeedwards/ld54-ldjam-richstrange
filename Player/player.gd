@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+class_name Player
 
 const SPEED = 10000.0
 
@@ -21,20 +21,33 @@ func _play_animation(direction):
 		sprite.play("up")
 
 func _process(_delta):
-	var coords := tilemap.local_to_map(position)
-	var data := tilemap.get_cell_tile_data(1, coords)
+	var cell := tilemap.local_to_map(position)
+	var data := tilemap.get_cell_tile_data(1, cell)
 
 	if data and data.z_index == 2:
-		tilemap.set_cell(1, coords, -1)
-		var cells := tilemap.get_surrounding_cells(coords)
-		cells.append(tilemap.get_neighbor_cell(coords, TileSet.CELL_NEIGHBOR_TOP_LEFT_CORNER))
-		cells.append(tilemap.get_neighbor_cell(coords, TileSet.CELL_NEIGHBOR_TOP_RIGHT_CORNER))
-		cells.append(tilemap.get_neighbor_cell(coords, TileSet.CELL_NEIGHBOR_BOTTOM_LEFT_CORNER))
-		cells.append(tilemap.get_neighbor_cell(coords, TileSet.CELL_NEIGHBOR_BOTTOM_RIGHT_CORNER))
+		unset_cells(tilemap, cell)
 
-		for cell in cells:
-			tilemap.set_cell(1, cell, -1)
-
+func unset_cells(current_tilemap: TileMap, cell: Vector2i):
+	current_tilemap.set_cell(1, cell, -1)
+	
+	var cells := current_tilemap.get_surrounding_cells(cell)
+		
+	for next_cell in cells:
+		var id = current_tilemap.get_cell_source_id(1, next_cell)
+		if id == -1:
+			continue
+		unset_cells(current_tilemap, next_cell)
+	
+func swap_cells(current_tilemap: TileMap, cell: Vector2i, from_atlas: Vector2i, to_atlas: Vector2i):
+	current_tilemap.set_cell(0, cell, current_tilemap.get_cell_source_id(0, cell), to_atlas)
+	
+	var cells := current_tilemap.get_surrounding_cells(cell)
+		
+	for next_cell in cells:
+		var next_atlas = current_tilemap.get_cell_atlas_coords(0, next_cell)
+		if next_atlas != from_atlas or next_atlas == to_atlas:
+			continue
+		swap_cells(current_tilemap, next_cell, from_atlas, to_atlas)
 
 func _physics_process(delta):
 	var direction = _get_direction()
@@ -50,12 +63,10 @@ func _physics_process(delta):
 	if (slide):
 		var collision := get_last_slide_collision()
 		var coll_position = collision.get_position()
-		var coords = tilemap.local_to_map(coll_position)
+		var coords = tilemap.local_to_map(coll_position - collision.get_normal())
 		var collider = collision.get_collider()
 		if collider is TileMap:
 			var c:TileMap = collider 
 			var atlas_coords := c.get_cell_atlas_coords(0, coords)
-			var data := c.get_cell_tile_data(0, coords)
-			var source_id := c.get_cell_source_id(0, coords)
 			if atlas_coords.x == 4:
-				c.set_cell(0, coords, source_id, Vector2i(2,0))
+				swap_cells(tilemap, coords, Vector2i(4,0), Vector2i(2,0))
