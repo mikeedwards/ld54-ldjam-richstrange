@@ -1,0 +1,118 @@
+[gd_scene load_steps=14 format=3 uid="uid://xf8ijppwbw8y"]
+
+[ext_resource type="Texture2D" uid="uid://oswt23kse4ai" path="res://Assets/player_0001.png" id="1_ndlsf"]
+[ext_resource type="Script" path="res://Player/player.gd" id="1_phuqe"]
+[ext_resource type="Texture2D" uid="uid://dt2dybkoemn64" path="res://Assets/player_0008.png" id="2_qtb3v"]
+[ext_resource type="Texture2D" uid="uid://dhds7kwkqpjsj" path="res://Assets/player_0002.png" id="3_nkxwt"]
+[ext_resource type="Texture2D" uid="uid://b5pdb21w6fu5v" path="res://Assets/player_0007.png" id="4_slwv8"]
+[ext_resource type="Texture2D" uid="uid://d6x74d3vfl0" path="res://Assets/player_0003.png" id="5_4q3pk"]
+[ext_resource type="Texture2D" uid="uid://cbyrwlkpfvhau" path="res://Assets/player_0005.png" id="6_x6i2l"]
+[ext_resource type="Texture2D" uid="uid://d3efy3kjcrk6x" path="res://Assets/player_0006.png" id="7_kp6ex"]
+[ext_resource type="Texture2D" uid="uid://8hqqkk0rw0eh" path="res://Assets/player_0004.png" id="8_ptkq7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t15rg"]
+radius = 16.0
+height = 50.0
+
+[sub_resource type="GDScript" id="GDScript_8g3en"]
+script/source = "extends CollisionShape2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yg8p2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ndlsf")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qtb3v")
+}],
+"loop": true,
+"name": &"down_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_nkxwt")
+}],
+"loop": true,
+"name": &"down_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_slwv8")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_4q3pk")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_x6i2l")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_kp6ex")
+}],
+"loop": true,
+"name": &"up_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_ptkq7")
+}],
+"loop": true,
+"name": &"up_right",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ehpqr"]
+radius = 24.0832
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_phuqe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+shape = SubResource("CapsuleShape2D_t15rg")
+script = SubResource("GDScript_8g3en")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_yg8p2")
+animation = &"up_right"
+
+[node name="InteractionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_ehpqr")
+debug_color = Color(0.105882, 0.639216, 0.337255, 0.419608)
