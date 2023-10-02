@@ -5,6 +5,8 @@ const SPEED = 10000.0
 
 @onready var sprite: AnimatedSprite2D = $Sprite
 @onready var tilemap: GameTileMap = $"/root/Main/TileMap"
+var original_position: Vector2
+var door_cell = null
 
 func _get_direction() -> Vector2:
 	return Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
@@ -29,6 +31,8 @@ func _move(direction: Vector2, delta: float) -> bool:
 		velocity = Vector2.ZERO
 	return move_and_slide()
 
+func _ready():
+	original_position = position
 
 func _process(_delta):
 	var cell := tilemap.local_to_map(position)
@@ -45,4 +49,25 @@ func _physics_process(delta):
 	if (slide):
 		var collision := get_last_slide_collision()
 		tilemap.check_doors(collision)
+
+
+
+func _on_tile_map_door_opened():
+	pass
+
+
+func _on_tile_map_door_touched(cell):
+	door_cell = cell
+#	tilemap.open_door(cell)
+
+
+func _on_door_puzzle_puzzle_passed():
+	print("passed")
+	if door_cell != null:
+		tilemap.open_door(door_cell)
+	door_cell = null
+
+
+func _on_door_puzzle_puzzle_failed():
+	position = original_position
 

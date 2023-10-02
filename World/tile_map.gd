@@ -1,5 +1,8 @@
-extends TileMap
 class_name GameTileMap
+extends TileMap
+
+signal door_touched(cell: Vector2i)
+signal door_opened
 
 enum LayerIDs {
 	GROUND,
@@ -8,13 +11,13 @@ enum LayerIDs {
 }
 
 
-enum TileIDs {
-	DANGER,
-	WALL,
-	FLOOR,
-	CEILING,
-	DOOR,
-	TRANSOM,
+const TileIDs = {
+	DANGER = Vector2i(0 ,0),
+	WALL = Vector2i(1 ,0),
+	FLOOR = Vector2i(2 ,0),
+	CEILING = Vector2i(3 ,0),
+	DOOR = Vector2i(4 ,0),
+	TRANSOM = Vector2i(5 ,0),
 }
 
 
@@ -65,5 +68,15 @@ func check_doors(collision: KinematicCollision2D):
 	var collider = collision.get_collider()
 	if collider == self:
 		var atlas_coords := get_cell_atlas_coords(LayerIDs.DOORS, cell)
-		if atlas_coords.x == 4:
-			swap_cells(LayerIDs.DOORS, cell, Vector2i(TileIDs.DOOR,0), Vector2i(TileIDs.TRANSOM,0))
+		if atlas_coords == TileIDs.DOOR:
+			door_touched.emit(cell)
+
+
+func open_door(cell: Vector2i):
+	swap_cells(LayerIDs.DOORS, cell, TileIDs.DOOR, TileIDs.TRANSOM)
+	door_opened.emit()
+
+
+func _on_door_puzzle_puzzle_failed():
+	get_tree().reload_current_scene()
+
