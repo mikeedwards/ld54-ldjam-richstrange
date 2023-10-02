@@ -11,8 +11,9 @@ config_version=5
 [application]
 
 config/name="ldjam_test"
-run/main_scene="res://World/main.tscn"
+run/main_scene="res://Scenes/intro.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
+boot_splash/bg_color=Color(0.188235, 0.682353, 0.980392, 1)
 config/icon="res://icon.svg"
 
 [display]
@@ -29,6 +30,10 @@ project/assembly_name="ldjam_test"
 
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot_style/plugin.cfg", "res://addons/gut/plugin.cfg")
 
 [layer_names]
 

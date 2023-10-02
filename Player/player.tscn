@@ -24,7 +24,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 "
 
@@ -108,7 +108,7 @@ script = SubResource("GDScript_8g3en")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_yg8p2")
-animation = &"up_right"
+animation = &"down"
 
 [node name="InteractionArea" type="Area2D" parent="."]
 
