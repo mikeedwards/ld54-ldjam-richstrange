@@ -4,7 +4,6 @@ extends Control
 signal puzzle_passed
 signal puzzle_failed
 
-var _parentScene = get_parent()
 @export var player: Player
 @onready var color_puzzle: ColorPuzzle = $Panel/VBoxContainer/GridContainer/ColorPuzzle
 @onready var line_puzzle: LinePuzzle = $Panel/VBoxContainer/GridContainer/LinePuzzle
@@ -13,8 +12,6 @@ var _parentScene = get_parent()
 
 var answer_index = 0
 @export var answer_limit = 1
-var current_answer
-var current_puzzle
 var first_puzzle = true
 
 var answers: Array[Vector2i] = [
@@ -71,34 +68,34 @@ func puzzle_pass():
 	advance_answers()
 
 
-func _on_color_puzzle_entry_passed(puzzle, button):
+func _on_color_puzzle_entry_passed(_puzzle, _button):
 	print("color puzzle pass")
 	puzzle_pass()
 
 
-func _on_color_puzzle_entry_failed(puzzle, button):
+func _on_color_puzzle_entry_failed(_puzzle, _button):
 	print("color puzzle fail")
 	reset()
 	puzzle_failed.emit()
 
 
-func _on_line_puzzle_entry_passed(puzzle, button):
+func _on_line_puzzle_entry_passed(_puzzle, _button):
 	print("line puzzle pass")
 	puzzle_pass()
 
 
-func _on_line_puzzle_entry_failed(puzzle, button):
+func _on_line_puzzle_entry_failed(_puzzle, _button):
 	print("line puzzle fail")
 	reset()
 	puzzle_failed.emit()
 
 
-func _on_circle_puzzle_entry_passed(puzzle, button):
+func _on_circle_puzzle_entry_passed(_puzzle, _button):
 	print("circle puzzle pass")
 	puzzle_pass()
 
 
-func _on_circle_puzzle_entry_failed(puzzle, button):
+func _on_circle_puzzle_entry_failed(_puzzle, _button):
 	print("circle puzzle fail")
 	reset()
 	puzzle_failed.emit()

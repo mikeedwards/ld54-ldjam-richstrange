@@ -15,13 +15,25 @@ func _get_direction() -> Vector2:
 func _play_animation(direction):
 	if direction.length() > 0 and abs(direction.x) - abs(direction.y) == 0:
 		if direction.x == direction.y:
-			sprite.play("down_right")
+			if direction.y < 0:
+				sprite.play("up_left")
+			else:
+				sprite.play("down_right")
 		else:
-			sprite.play("down_left")
+			if direction.y < 0:
+				sprite.play("up_right")
+			else:
+				sprite.play("down_left")
 	elif abs(direction.x) > abs(direction.y):
-		sprite.play("left")
+		if direction.x < 0:
+			sprite.play("left")
+		else:
+			sprite.play("right")
 	else:
-		sprite.play("up")
+		if direction.y < 0:
+			sprite.play("up")
+		else:
+			sprite.play("down")
 
 
 func _move(direction: Vector2, delta: float) -> bool:
@@ -71,3 +83,6 @@ func _on_door_puzzle_puzzle_passed():
 func _on_door_puzzle_puzzle_failed():
 	position = original_position
 
+
+func _on_area_2d_area_entered(area):
+	get_tree().change_scene_to_file("res://Scenes/outro.tscn")

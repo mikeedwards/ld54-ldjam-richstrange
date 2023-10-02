@@ -52,7 +52,8 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_vertical = 3
 theme = SubResource("Theme_yc1ex")
-text = "Press the flashing controller
+text = "Press the flashing controller first and then all the previous controls in order... from memory!
+Do you have what it takes to be a HEAD SPACE CADET?!
 "
 horizontal_alignment = 1
 vertical_alignment = 1

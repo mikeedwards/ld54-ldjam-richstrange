@@ -8,13 +8,6 @@ signal entry_failed(puzzle: int, button: int)
 
 var active_index: int = -1
 
-func _ready():
-	pass
-
-
-func _process(delta):
-	pass
-
 
 func make_active(code: int, first: bool = false):
 	active_index = code

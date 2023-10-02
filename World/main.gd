@@ -14,7 +14,7 @@ func _process(_delta):
 	pass
 
 
-func _on_tile_map_door_touched(cell):
+func _on_tile_map_door_touched(_cell):
 	door_puzzle.visible = true
 
 
