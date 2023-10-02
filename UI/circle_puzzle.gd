@@ -1,16 +1,17 @@
-class_name LinePuzzle
+class_name CirclePuzzle
 extends Puzzle
 
 
 func _ready():
 	buttons  = [
-	$HBoxContainer/VBoxContainer/Button1,
-	$HBoxContainer/VBoxContainer/Button2,
-	$HBoxContainer/VBoxContainer/Button3,
-	$HBoxContainer/VBoxContainer/Button4,
-	$HBoxContainer/VBoxContainer/Button5,
-	$HBoxContainer/VBoxContainer/Button6,
-	$HBoxContainer/VBoxContainer/Button7,
+	$Marker1/Button1,
+	$Marker2/Button2,
+	$Marker3/Button3,
+	$Marker4/Button4,
+	$Marker5/Button5,
+	$Marker6/Button6,
+	$Marker7/Button7,
+	$Marker8/Button8,
 	]
 
 
@@ -40,3 +41,8 @@ func _on_button_6_pressed():
 
 func _on_button_7_pressed():
 	test_press(6)
+
+
+func _on_button_8_pressed():
+	test_press(7)
+

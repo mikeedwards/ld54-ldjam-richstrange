@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://clcflbyd5317"]
+[gd_scene load_steps=9 format=3 uid="uid://clcflbyd5317"]
 
 [ext_resource type="Script" path="res://UI/color_puzzle.gd" id="1_k5m1y"]
 [ext_resource type="Script" path="res://UI/door_puzzle.gd" id="1_tsxyv"]
 [ext_resource type="Theme" uid="uid://bq1ko8jw2bbm2" path="res://Themes/base_theme.tres" id="2_3frfh"]
 [ext_resource type="Script" path="res://UI/puzzle_button.gd" id="2_53hv4"]
 [ext_resource type="Script" path="res://UI/line_puzzle.gd" id="5_ml513"]
+[ext_resource type="Script" path="res://UI/circle_puzzle.gd" id="6_yiaur"]
 
 [sub_resource type="SystemFont" id="SystemFont_ki1c7"]
 subpixel_positioning = 0
@@ -195,10 +196,186 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 5.0
 
-[node name="Panel3" type="Panel" parent="Panel/VBoxContainer/GridContainer"]
+[node name="CirclePuzzle" type="Panel" parent="Panel/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("6_yiaur")
+
+[node name="Marker1" type="Marker2D" parent="Panel/VBoxContainer/GridContainer/CirclePuzzle"]
+position = Vector2(300, 200)
+
+[node name="Button1" type="Button" parent="Panel/VBoxContainer/GridContainer/CirclePuzzle/Marker1"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = 60.0
+offset_right = 15.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_3frfh")
+script = ExtResource("2_53hv4")
+bg_color = Color(0.74902, 0.74902, 0.74902, 1)
+
+[node name="Marker2" type="Marker2D" parent="Panel/VBoxContainer/GridContainer/CirclePuzzle"]
+position = Vector2(300, 200)
+rotation = 0.785398
+
+[node name="Button2" type="Button" parent="Panel/VBoxContainer/GridContainer/CirclePuzzle/Marker2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = 60.0
+offset_right = 15.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_3frfh")
+script = ExtResource("2_53hv4")
+bg_color = Color(0.74902, 0.74902, 0.74902, 1)
+
+[node name="Marker3" type="Marker2D" parent="Panel/VBoxContainer/GridContainer/CirclePuzzle"]
+position = Vector2(300, 200)
+rotation = 1.5708
+
+[node name="Button3" type="Button" parent="Panel/VBoxContainer/GridContainer/CirclePuzzle/Marker3"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = 60.0
+offset_right = 15.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_3frfh")
+script = ExtResource("2_53hv4")
+bg_color = Color(0.74902, 0.74902, 0.74902, 1)
+
+[node name="Marker4" type="Marker2D" parent="Panel/VBoxContainer/GridContainer/CirclePuzzle"]
+position = Vector2(300, 200)
+rotation = 2.35619
+
+[node name="Button4" type="Button" parent="Panel/VBoxContainer/GridContainer/CirclePuzzle/Marker4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = 60.0
+offset_right = 15.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_3frfh")
+script = ExtResource("2_53hv4")
+bg_color = Color(0.74902, 0.74902, 0.74902, 1)
+
+[node name="Marker5" type="Marker2D" parent="Panel/VBoxContainer/GridContainer/CirclePuzzle"]
+position = Vector2(300, 200)
+rotation = 3.14159
+
+[node name="Button5" type="Button" parent="Panel/VBoxContainer/GridContainer/CirclePuzzle/Marker5"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = 60.0
+offset_right = 15.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_3frfh")
+script = ExtResource("2_53hv4")
+bg_color = Color(0.74902, 0.74902, 0.74902, 1)
+
+[node name="Marker6" type="Marker2D" parent="Panel/VBoxContainer/GridContainer/CirclePuzzle"]
+position = Vector2(300, 200)
+rotation = 3.92699
+
+[node name="Button6" type="Button" parent="Panel/VBoxContainer/GridContainer/CirclePuzzle/Marker6"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = 60.0
+offset_right = 15.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_3frfh")
+script = ExtResource("2_53hv4")
+bg_color = Color(0.74902, 0.74902, 0.74902, 1)
+
+[node name="Marker7" type="Marker2D" parent="Panel/VBoxContainer/GridContainer/CirclePuzzle"]
+position = Vector2(300, 200)
+rotation = 4.71239
+
+[node name="Button7" type="Button" parent="Panel/VBoxContainer/GridContainer/CirclePuzzle/Marker7"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = 60.0
+offset_right = 15.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_3frfh")
+script = ExtResource("2_53hv4")
+bg_color = Color(0.74902, 0.74902, 0.74902, 1)
+
+[node name="Marker8" type="Marker2D" parent="Panel/VBoxContainer/GridContainer/CirclePuzzle"]
+position = Vector2(300, 200)
+rotation = 5.49779
+
+[node name="Button8" type="Button" parent="Panel/VBoxContainer/GridContainer/CirclePuzzle/Marker8"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = 60.0
+offset_right = 15.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_3frfh")
+script = ExtResource("2_53hv4")
+bg_color = Color(0.74902, 0.74902, 0.74902, 1)
 
 [node name="Panel4" type="Panel" parent="Panel/VBoxContainer/GridContainer"]
 layout_mode = 2
@@ -231,3 +408,21 @@ size_flags_vertical = 3
 [connection signal="pressed" from="Panel/VBoxContainer/GridContainer/LinePuzzle/HBoxContainer/VBoxContainer/Button6" to="Panel/VBoxContainer/GridContainer/LinePuzzle/HBoxContainer/VBoxContainer/Button6" method="_on_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/GridContainer/LinePuzzle/HBoxContainer/VBoxContainer/Button7" to="Panel/VBoxContainer/GridContainer/LinePuzzle" method="_on_button_7_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/GridContainer/LinePuzzle/HBoxContainer/VBoxContainer/Button7" to="Panel/VBoxContainer/GridContainer/LinePuzzle/HBoxContainer/VBoxContainer/Button7" method="_on_pressed"]
+[connection signal="entry_failed" from="Panel/VBoxContainer/GridContainer/CirclePuzzle" to="." method="_on_circle_puzzle_entry_failed"]
+[connection signal="entry_passed" from="Panel/VBoxContainer/GridContainer/CirclePuzzle" to="." method="_on_circle_puzzle_entry_passed"]
+[connection signal="pressed" from="Panel/VBoxContainer/GridContainer/CirclePuzzle/Marker1/Button1" to="Panel/VBoxContainer/GridContainer/CirclePuzzle" method="_on_button_1_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/GridContainer/CirclePuzzle/Marker1/Button1" to="Panel/VBoxContainer/GridContainer/CirclePuzzle/Marker1/Button1" method="_on_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/GridContainer/CirclePuzzle/Marker2/Button2" to="Panel/VBoxContainer/GridContainer/CirclePuzzle" method="_on_button_2_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/GridContainer/CirclePuzzle/Marker2/Button2" to="Panel/VBoxContainer/GridContainer/CirclePuzzle/Marker2/Button2" method="_on_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/GridContainer/CirclePuzzle/Marker3/Button3" to="Panel/VBoxContainer/GridContainer/CirclePuzzle" method="_on_button_3_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/GridContainer/CirclePuzzle/Marker3/Button3" to="Panel/VBoxContainer/GridContainer/CirclePuzzle/Marker3/Button3" method="_on_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/GridContainer/CirclePuzzle/Marker4/Button4" to="Panel/VBoxContainer/GridContainer/CirclePuzzle" method="_on_button_4_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/GridContainer/CirclePuzzle/Marker4/Button4" to="Panel/VBoxContainer/GridContainer/CirclePuzzle/Marker4/Button4" method="_on_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/GridContainer/CirclePuzzle/Marker5/Button5" to="Panel/VBoxContainer/GridContainer/CirclePuzzle" method="_on_button_5_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/GridContainer/CirclePuzzle/Marker5/Button5" to="Panel/VBoxContainer/GridContainer/CirclePuzzle/Marker5/Button5" method="_on_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/GridContainer/CirclePuzzle/Marker6/Button6" to="Panel/VBoxContainer/GridContainer/CirclePuzzle" method="_on_button_6_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/GridContainer/CirclePuzzle/Marker6/Button6" to="Panel/VBoxContainer/GridContainer/CirclePuzzle/Marker6/Button6" method="_on_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/GridContainer/CirclePuzzle/Marker7/Button7" to="Panel/VBoxContainer/GridContainer/CirclePuzzle" method="_on_button_7_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/GridContainer/CirclePuzzle/Marker7/Button7" to="Panel/VBoxContainer/GridContainer/CirclePuzzle/Marker7/Button7" method="_on_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/GridContainer/CirclePuzzle/Marker8/Button8" to="Panel/VBoxContainer/GridContainer/CirclePuzzle" method="_on_button_8_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/GridContainer/CirclePuzzle/Marker8/Button8" to="Panel/VBoxContainer/GridContainer/CirclePuzzle/Marker8/Button8" method="_on_pressed"]

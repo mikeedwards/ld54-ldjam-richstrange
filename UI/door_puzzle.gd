@@ -8,7 +8,8 @@ var _parentScene = get_parent()
 @export var player: Player
 @onready var color_puzzle: ColorPuzzle = $Panel/VBoxContainer/GridContainer/ColorPuzzle
 @onready var line_puzzle: LinePuzzle = $Panel/VBoxContainer/GridContainer/LinePuzzle
-@onready var puzzles = [color_puzzle, line_puzzle]
+@onready var circle_puzzle: CirclePuzzle = $Panel/VBoxContainer/GridContainer/CirclePuzzle
+@onready var puzzles = [color_puzzle, line_puzzle, circle_puzzle]
 
 var answer_index = 0
 @export var answer_limit = 1
@@ -28,6 +29,14 @@ var answers: Array[Vector2i] = [
 	Vector2i(2, 5), 
 	Vector2i(2, 6), 
 	Vector2i(2, 7), 
+	Vector2i(3, 1), 
+	Vector2i(3, 2), 
+	Vector2i(3, 3), 
+	Vector2i(3, 4), 
+	Vector2i(3, 5), 
+	Vector2i(3, 6), 
+	Vector2i(3, 7), 
+	Vector2i(3, 8), 
 	]
 
 
@@ -82,3 +91,15 @@ func _on_line_puzzle_entry_failed(puzzle, button):
 	print("line puzzle fail")
 	reset()
 	puzzle_failed.emit()
+
+
+func _on_circle_puzzle_entry_passed(puzzle, button):
+	print("circle puzzle pass")
+	puzzle_pass()
+
+
+func _on_circle_puzzle_entry_failed(puzzle, button):
+	print("circle puzzle fail")
+	reset()
+	puzzle_failed.emit()
+
